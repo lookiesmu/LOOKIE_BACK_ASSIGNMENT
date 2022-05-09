@@ -1,7 +1,10 @@
-package com.example.lookie.group.domain;
+package com.example.lookie.questionAnswer;
 
 import com.example.lookie.grouprequest.domain.GroupRequest;
+import com.example.lookie.question.domain.Question;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,6 +12,7 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class QuestionAnswer {
 
     @Id @GeneratedValue

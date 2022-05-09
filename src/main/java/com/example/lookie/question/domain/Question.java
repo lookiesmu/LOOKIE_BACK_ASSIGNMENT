@@ -1,7 +1,10 @@
-package com.example.lookie.group.domain;
+package com.example.lookie.question.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.lookie.group.domain.Group;
+import com.example.lookie.questionAnswer.QuestionAnswer;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -12,6 +15,7 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Question {
     @Id @GeneratedValue
     @Column(name = "question_id")
@@ -26,7 +30,6 @@ public class Question {
 
     @OneToMany(mappedBy = "question", orphanRemoval = true)
     private List<QuestionAnswer> questionAnswerList = new ArrayList<>();
-
 
     // 연관관계 메서드
     public void setGroup(Group group){
@@ -44,5 +47,9 @@ public class Question {
         question.setGroup(group);
         question.title = title;
         return question;
+    }
+
+    public void changeTitle(String changeTitle) {
+        this.title=changeTitle;
     }
 }
